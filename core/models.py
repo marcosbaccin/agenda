@@ -29,4 +29,12 @@ class Evento(models.Model):
             return True
         else:
             return False
+    
+    def get_evento_a_comecar(self):
+        if self.data_evento > datetime.now():
+            dif = self.data_evento - datetime.now()
+            if dif.total_seconds() / 3600 <= 1:
+                return True
+        else:
+            return False
         
